@@ -21,12 +21,12 @@ export default function Footer() {
             <a href="/" className={styles.link}>Home</a>
             <a href="/#how-it-works" className={styles.link}>How It Works</a>
             <a href="/#why-attend" className={styles.link}>Why Attend</a>
-            <a href="https://rzp.io/rzp/6kG6tUA?callback_url=https%3A%2F%2Fmindspaglobal.netlify.app%2Fthank-you" target="_blank" rel="noopener noreferrer" className={styles.link}>Book Session</a>
+            <a href="https://api.whatsapp.com/send/?phone=919325214189&text=Hi+Dipti%21+I+have+a+question+about+the+1%3A1+Neuro+Mind+Session.&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className={styles.link}>Book Session</a>
           </nav>
 
           {/* CTA pill */}
           <a
-            href="https://rzp.io/rzp/6kG6tUA?callback_url=https%3A%2F%2Fmindspaglobal.netlify.app%2Fthank-you"
+            href="https://api.whatsapp.com/send/?phone=919325214189&text=Hi+Dipti%21+I+have+a+question+about+the+1%3A1+Neuro+Mind+Session.&type=phone_number&app_absent=0"
             target="_blank"
             rel="noopener noreferrer"
             id="footer-cta-button"

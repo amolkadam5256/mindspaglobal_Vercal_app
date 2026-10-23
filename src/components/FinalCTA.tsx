@@ -100,7 +100,7 @@ export default function FinalCTA() {
 
         {/* Primary CTA */}
         <a
-          href="https://rzp.io/rzp/6kG6tUA?callback_url=https%3A%2F%2Fmindspaglobal.netlify.app%2Fthank-you"
+          href="https://api.whatsapp.com/send/?phone=919325214189&text=Hi+Dipti%21+I+have+a+question+about+the+1%3A1+Neuro+Mind+Session.&type=phone_number&app_absent=0"
           id="final-cta-button"
           className={`btn btn-primary btn-xl btn-pulse btn-pop ${styles.ctaBtn}`}
           style={{ display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 800 }}

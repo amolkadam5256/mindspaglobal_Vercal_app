@@ -66,7 +66,9 @@ export default function Home() {
       {/* Sticky mobile CTA bar */}
       <div className="sticky-cta hide-desktop" role="complementary" aria-label="Book session">
         <a
-          href="#register"
+          href="https://api.whatsapp.com/send/?phone=919325214189&text=Hi+Dipti%21+I+have+a+question+about+the+1%3A1+Neuro+Mind+Session.&type=phone_number&app_absent=0"
+          target="_blank"
+          rel="noopener noreferrer"
           id="sticky-mobile-cta"
           className="btn btn-primary btn-pulse"
           style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', fontWeight: 800 }}

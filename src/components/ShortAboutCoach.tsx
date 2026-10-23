@@ -61,7 +61,9 @@ export default function ShortAboutCoach() {
             </div>
 
             <a
-              href="#register"
+              href="https://api.whatsapp.com/send/?phone=919325214189&text=Hi+Dipti%21+I+have+a+question+about+the+1%3A1+Neuro+Mind+Session.&type=phone_number&app_absent=0"
+              target="_blank"
+              rel="noopener noreferrer"
               className={`btn btn-primary btn-pulse ${styles.ctaBtn}`}
               style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px', textAlign: 'center' }}
             >
