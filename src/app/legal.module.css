@@ -1,0 +1,44 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 120px 20px 80px;
+  min-height: 80vh;
+}
+
+.title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-family: var(--font-outfit), sans-serif;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+  padding-bottom: 1rem;
+}
+
+.content {
+  font-family: var(--font-body);
+  color: var(--text-secondary);
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+.content h2 {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  font-family: var(--font-jakarta), sans-serif;
+}
+
+.content p {
+  margin-bottom: 1.2rem;
+}
+
+.content ul {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.content li {
+  margin-bottom: 0.5rem;
+}

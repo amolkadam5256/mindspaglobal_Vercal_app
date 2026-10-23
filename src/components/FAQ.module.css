@@ -1,0 +1,16 @@
+.section {
+  position: relative;
+}
+.header { text-align: center; margin-bottom: 3rem; }
+.title { color: var(--text-primary, #f5f5f5); margin-bottom: 0.75rem; }
+.subtitle { color: var(--text-secondary); font-size: 1.02rem; }
+
+.list {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.cta { display: flex; justify-content: center; }

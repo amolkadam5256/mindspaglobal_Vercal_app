@@ -1,0 +1,5 @@
+.sectionLine {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(96, 200, 245, 0.08), transparent);
+  margin: 0 var(--container-px, 1.5rem);
+}

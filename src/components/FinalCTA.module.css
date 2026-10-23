@@ -1,0 +1,237 @@
+.section {
+  position: relative;
+  text-align: center;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+  position: relative;
+  z-index: 1;
+}
+
+.glowOrb {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%; max-width: 700px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(2, 132, 199, 0.12) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.urgencyPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(239,68,68,0.1);
+  border: 1px solid rgba(239,68,68,0.3);
+  color: #dc2626;
+  border-radius: 30px;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: center;
+  justify-content: center;
+  line-height: 1.4;
+}
+.urgencyDot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #ef4444;
+  animation: blink 1.5s ease infinite;
+  flex-shrink: 0;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.headline {
+  color: var(--text-primary);
+  max-width: 100%;
+}
+
+@media (max-width: 680px) {
+  .headline {
+    font-size: clamp(1.4rem, 6.5vw, 2.2rem) !important;
+  }
+}
+
+.sub {
+  max-width: 580px;
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+/* Price box */
+.priceBox {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(96,200,245,0.2);
+  border-radius: 22px;
+  padding: 2rem 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  max-width: 680px;
+  width: 100%;
+  text-align: left;
+}
+.priceLeft { display: flex; flex-direction: column; gap: 0.3rem; min-width: 140px; }
+.priceLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+.priceRow { display: flex; align-items: baseline; gap: 0.65rem; }
+.priceSlash {
+  font-family: var(--font-outfit), 'Outfit', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+.price {
+  font-family: var(--font-outfit), 'Outfit', sans-serif;
+  font-size: 3rem;
+  font-weight: 900;
+  color: #60c8f5;
+  line-height: 1;
+  text-shadow: 0 0 30px rgba(96,200,245,0.4);
+}
+.priceSave {
+  font-size: 0.78rem;
+  color: #22d3a0;
+  font-weight: 600;
+}
+
+.priceDivider {
+  width: 1px;
+  height: 80px;
+  background: rgba(96,200,245,0.15);
+  flex-shrink: 0;
+}
+.priceRight { display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
+.includesTitle {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+.includesList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.includesList li {
+  font-size: 0.87rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* CTA button */
+.ctaBtn {
+  font-size: clamp(0.85rem, 3.5vw, 1.25rem) !important;
+  padding: clamp(1rem, 2vw, 1.45rem) clamp(1rem, 3vw, 3.75rem) !important;
+  max-width: 500px;
+  width: 100%;
+  white-space: nowrap !important;
+}
+
+/* Trust row */
+.trustRow {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.trustItem {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 9999px;
+  padding: 0.3rem 0.9rem;
+  font-weight: 500;
+}
+
+@media (max-width: 680px) {
+  .priceBox {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+  .priceLeft { align-items: center; }
+  .priceDivider { width: 80%; height: 1px; }
+}
+
+/* Countdown Timer */
+.countdown {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #dc2626;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.countdownLabel {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.countdownTimer {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.timerUnit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: 8px;
+  padding: 0.35rem 0.6rem;
+  min-width: 48px;
+}
+
+.timerNum {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #dc2626;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.timerSub {
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: rgba(220, 38, 38, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 0.1rem;
+}
+
+.timerColon {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: rgba(220, 38, 38, 0.5);
+  margin-bottom: 0.75rem;
+  font-family: 'Outfit', sans-serif;
+}

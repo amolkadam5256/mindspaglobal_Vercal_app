@@ -1,0 +1,423 @@
+.section {
+  position: relative;
+  overflow: hidden;
+  padding: var(--section-py) 0 2rem;
+  background-color: #F8FAFC;
+}
+
+.bgImage {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image: 
+    linear-gradient(rgba(2, 132, 199, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(2, 132, 199, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+  z-index: 0;
+}
+
+.overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(to bottom, #F8FAFC 0%, transparent 15%, transparent 85%, #F8FAFC 100%);
+  z-index: 1;
+}
+
+/* ============================
+   TWO-COLUMN LAYOUT
+   Left: header + credentials
+   Right: photo
+   ============================ */
+.inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto auto;
+  column-gap: 4rem;
+  row-gap: 0;
+  position: relative;
+  z-index: 2;
+  align-items: start;
+}
+
+/* Header spans left column only */
+.header {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.eyebrow {
+  font-family: var(--font-outfit), sans-serif;
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #475569;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.name {
+  font-family: var(--font-outfit), 'Outfit', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 3.8rem);
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-top: 0.2rem;
+}
+
+.role {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #475569;
+  margin-top: 0.5rem;
+}
+
+.dot {
+  color: #cbd5e1;
+  margin: 0 0.4rem;
+}
+
+.nameLine {
+  width: 70%;
+  max-width: 320px;
+  height: 5px;
+  background: #0284c7;
+  border-radius: 4px;
+  margin-top: 0.6rem;
+  transform: rotate(-1deg);
+  opacity: 0.85;
+}
+
+/* Photo is in the right column, spans rows 1–3 */
+.photoFrame {
+  grid-column: 2;
+  grid-row: 1 / 4;
+  position: relative;
+  width: 400px;
+  aspect-ratio: 4/5;
+  border-radius: 24px;
+  overflow: visible;
+  align-self: start;
+  margin-top: 0;
+}
+
+/* Info content spans left column rows 2–3 */
+.infoContent {
+  grid-column: 1;
+  grid-row: 2 / 4;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* --- HEADER TEXT --- */
+.name {
+  color: #0284c7;
+  font-size: clamp(3rem, 6vw, 5rem);
+  margin: 0;
+  line-height: 1;
+}
+
+.role {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  margin-top: 0.25rem;
+}
+
+/* --- PHOTO --- */
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 24px;
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.12), 0 4px 15px rgba(2,132,199,0.08);
+  position: relative;
+  z-index: 2;
+}
+
+.photoFrame::after {
+  content: '';
+  position: absolute;
+  top: -12px; left: -12px; right: 16px; bottom: 16px;
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.12), transparent);
+  border: 1.5px solid rgba(2, 132, 199, 0.2);
+  border-radius: 28px;
+  z-index: 1;
+}
+
+/* Floating Badges */
+.photoBadge {
+  position: absolute;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  z-index: 10;
+  color: #f8fafc;
+  animation: floatBadge 5s ease-in-out infinite;
+  white-space: nowrap;
+}
+
+@keyframes floatBadge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.badgeRight {
+  bottom: 15%;
+  right: -30px;
+  animation-delay: 1s;
+}
+
+.badgeLeft {
+  top: -15px;
+  left: -25px;
+  animation-delay: 0s;
+}
+
+.photoBadgeIcon {
+  background: rgba(255,255,255,0.07);
+  padding: 0.5rem;
+  border-radius: 50%;
+}
+
+.photoBadgeTitle {
+  color: #FFFFFF;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.1rem;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.photoBadgeSub {
+  color: rgba(255,255,255,0.55);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* --- CREDENTIALS --- */
+.credentials {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  text-align: left;
+  width: 100%;
+}
+
+.credItem {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-size: 1rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.credIcon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(2, 132, 199, 0.1);
+  padding: 5px;
+  border-radius: 50%;
+}
+
+/* --- STATS ROW --- */
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 0;
+  width: 100%;
+}
+
+.stat {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 16px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat:hover {
+  transform: translateY(-4px);
+  border-color: rgba(2, 132, 199, 0.25);
+  box-shadow: 0 8px 20px rgba(2, 132, 199, 0.08);
+}
+
+.statNum {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 900;
+  color: #0284c7;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.statLabel {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* --- VIDEO & CTA SECTION (Bottom) --- */
+.bottomSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3.5rem;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.videoSection {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto 3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 3.5rem;
+}
+
+.videoTextContent {
+  flex: 1;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.videoTitle {
+  font-size: 2rem;
+  margin: 0;
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.videoDesc {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.videoWrapper {
+  position: relative;
+  flex: 1.4;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  border: 1.5px solid rgba(2, 132, 199, 0.2);
+}
+
+.videoWrapper iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+  .photoFrame {
+    width: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .videoSection {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  .videoTextContent {
+    text-align: center;
+  }
+  .videoWrapper {
+    width: 100%;
+    flex: auto;
+  }
+}
+
+@media (max-width: 900px) {
+  /* Stack vertically on tablet/mobile */
+  .inner {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    row-gap: 2.5rem;
+  }
+  .header {
+    grid-column: 1;
+    grid-row: 1;
+    align-items: center;
+    text-align: center;
+  }
+  .photoFrame {
+    grid-column: 1;
+    grid-row: 2;
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+  .infoContent {
+    grid-column: 1;
+    grid-row: 3;
+    align-items: center;
+  }
+  .statsRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .credentials {
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .badgeRight { bottom: 10%; right: -15px; }
+  .badgeLeft { top: -10px; left: -10px; }
+  .photoBadge { padding: 0.6rem 1rem; gap: 0.6rem; }
+  .photoBadgeTitle { font-size: 0.95rem; }
+  .photoBadgeSub { font-size: 0.68rem; }
+  .credItem { font-size: 0.97rem; }
+  
+  .ctaBtn {
+    font-size: 0.85rem !important;
+    padding: 1rem 1.25rem !important;
+    white-space: nowrap !important;
+  }
+}

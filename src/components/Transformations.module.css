@@ -1,0 +1,103 @@
+.section {}
+.header { text-align: center; margin-bottom: 3rem; }
+.title { color: var(--text-primary); margin-bottom: 0.75rem; }
+.subtitle { color: var(--text-secondary); font-size: 1.02rem; max-width: 600px; margin: 0 auto; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(2,132,199,0.1);
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.cardIcon {
+  font-size: 1.75rem;
+}
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+}
+.avatarWrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2.5px solid rgba(2,132,199,0.3);
+  box-shadow: 0 0 16px rgba(2,132,199,0.12);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-secondary);
+}
+.avatarImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+}
+.userMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+.cardTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+.cardTag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #0284c7;
+  letter-spacing: 0.02em;
+  text-align: left;
+}
+.cardBody {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.72;
+  flex: 1;
+  text-align: justify;
+}
+
+.cta { display: flex; justify-content: center; }
+
+@media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+
+@media (max-width: 480px) {
+  .ctaBtn {
+    width: 100%;
+    font-size: 0.85rem !important;
+    padding: 1rem 0.5rem !important;
+    white-space: nowrap !important;
+    line-height: 1;
+  }
+}

@@ -1,0 +1,118 @@
+.section {
+  position: relative;
+  z-index: 1;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 5rem; /* Extra margin for overlapping avatars */
+}
+.title  { margin-bottom: 0.75rem; }
+.subtitle { font-size: 1.05rem; max-width: 600px; margin: 0 auto; }
+
+/* 4-column grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem 1.25rem;
+  margin-bottom: 4rem;
+}
+
+/* Card */
+.card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: 3.5rem 1.5rem 1.5rem;
+  margin-top: 45px; /* Creates space for the overlapping image */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition:
+    transform  0.3s cubic-bezier(.22,1,.36,1),
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.08), 0 0 0 1px rgba(96,200,245,0.15);
+  border-color: rgba(96,200,245,0.3);
+}
+
+/* Floating Circular Image */
+.imgRing {
+  position: absolute;
+  top: -45px; /* Pulls it exactly half out of the card */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: var(--bg-secondary); /* Matches the section background so it looks cut-out */
+  padding: 6px; /* Creates the cut-out ring effect */
+  z-index: 2;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card:hover .imgRing {
+  transform: translateX(-50%) scale(1.08);
+}
+
+.imgCircle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+.cardImg {
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* Text Content */
+.cardTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.35;
+  margin-bottom: 0.6rem;
+}
+
+.cardDesc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* CTA */
+.cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.ctaLabel {
+  font-style: italic;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .grid { grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+}
+@media (max-width: 900px) {
+  .grid { grid-template-columns: repeat(2, 1fr); gap: 3rem 1.5rem; }
+}
+@media (max-width: 480px) {
+  .grid { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 2rem; }
+  .card { padding: 3rem 1.25rem 1.25rem; }
+}
