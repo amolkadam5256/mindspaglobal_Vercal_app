@@ -53,7 +53,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${playfair.variable} ${jakarta.variable} ${bebas.variable} ${outfit.variable}`}>
-      <body>
+      <body suppressHydrationWarning>
         {/* ── Meta Pixel Base Code ── */}
         <Script
           id="meta-pixel"

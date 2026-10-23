@@ -44,7 +44,13 @@ export default function WhoIsThisFor() {
           {boxes.map((box, i) => (
             <div key={i} className={styles.box}>
               <div className={styles.iconWrapper}>
-                <Image src={box.image} alt={box.title} fill className={styles.image} />
+                <Image
+                  src={box.image}
+                  alt={box.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 500px"
+                  className={styles.image}
+                />
               </div>
               <h3 className={styles.boxTitle}>{box.title}</h3>
             </div>
