@@ -120,7 +120,8 @@ export default function SessionRegistrationForm() {
         ) : (
           <>
             <p className={styles.session}>1:1 Neuro Mind Session</p>
-            <h2 id="registration-title">Join the One-on-One Session with<br /><span>Dr. Dipti Panhalkar</span></h2>
+            <h2 id="registration-title">Book Your First One-on-One Personal Mind Coaching Session with<br /><span>Dr. Dipti Panhalkar</span></h2>
+            <p className={styles.doctorRole}>Psychologist &amp; Mind Coach</p>
             <p className={styles.meta}>Online via Zoom</p>
             <form onSubmit={handleSubmit} noValidate>
               <fieldset className={styles.details}>
