@@ -67,7 +67,7 @@ export default function ShortAboutCoach() {
               className={`btn btn-primary btn-pulse ${styles.ctaBtn}`}
               style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px', textAlign: 'center' }}
             >
-              <Target size={20} style={{ flexShrink: 0 }} /> <span style={{ whiteSpace: 'nowrap' }}>Yes, I want to heal only at <s style={{ opacity: 0.7, marginRight: '4px' }}>₹499</s>₹49</span>
+              <Target size={20} style={{ flexShrink: 0 }} /> <span style={{ whiteSpace: 'nowrap' }}>Book for <s style={{ opacity: 0.7, marginRight: '4px' }}>₹499</s>Free</span>
             </a>
           </div>
         </div>

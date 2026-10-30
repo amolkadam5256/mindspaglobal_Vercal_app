@@ -32,7 +32,7 @@ export default function Footer() {
             id="footer-cta-button"
             className={`btn btn-primary ${styles.footerCta}`}
           >
-            Book for <s style={{ opacity: 0.7, marginRight: '4px' }}>₹</s>₹49
+            Book for <s style={{ opacity: 0.7, marginRight: '4px' }}>₹499</s>Free
           </a>
         </div>
 

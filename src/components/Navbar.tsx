@@ -32,7 +32,7 @@ export default function Navbar() {
           className={`btn btn-primary hide-mobile ${styles.navCta}`}
           id="nav-cta-button"
         >
-          <Zap size={18} /> Book for <s style={{ opacity: 0.7, marginRight: '4px' }}>₹499</s>₹49
+          <Zap size={18} /> Book for <s style={{ opacity: 0.7, marginRight: '4px' }}>₹499</s>Free
         </a>
       </div>
     </nav>

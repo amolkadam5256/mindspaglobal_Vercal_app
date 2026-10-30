@@ -21,6 +21,7 @@ import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
 import SocialProofToast from "@/components/SocialProofToast";
+import SessionRegistrationForm from "@/components/SessionRegistrationForm";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -59,6 +60,7 @@ export default function Home() {
         <FAQ />
 
         <FinalCTA />
+        <SessionRegistrationForm />
       </main>
 
       <Footer />
@@ -73,7 +75,7 @@ export default function Home() {
           className="btn btn-primary btn-pulse"
           style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', fontWeight: 800 }}
         >
-          <Zap size={18} /> Book your 1 on 1 Mental Clarity Session Rs. 49
+          <Zap size={18} /> Book for <s style={{ opacity: 0.7, marginRight: '4px' }}>₹499</s>Free
         </a>
       </div>
     </>

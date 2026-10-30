@@ -68,7 +68,7 @@ export default function WhoIsThisFor() {
             className="btn btn-primary btn-lg btn-pulse"
             style={{ display:'flex', alignItems:'center', gap:'8px' }}
           >
-            <CheckCircle2 size={20} style={{ flexShrink: 0 }} /> <span style={{ whiteSpace: 'nowrap' }}>Yes, I want to heal only at <s style={{ opacity: 0.7, marginRight: '4px' }}>₹499</s>₹49</span>
+            <CheckCircle2 size={20} style={{ flexShrink: 0 }} /> <span style={{ whiteSpace: 'nowrap' }}>Book for <s style={{ opacity: 0.7, marginRight: '4px' }}>₹499</s>Free</span>
           </a>
         </div>
       </div>
