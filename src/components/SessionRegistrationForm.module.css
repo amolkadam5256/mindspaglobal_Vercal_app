@@ -1,4 +1,7 @@
 .section {
+  display: grid;
+  justify-items: center;
+  width: 100%;
   scroll-margin-top: 2rem;
   padding: clamp(2rem, 6vw, 4rem) 1rem;
   background: #f8fafc;
@@ -7,7 +10,8 @@
 .card {
   position: relative;
   width: min(100%, 620px);
-  margin: 0 auto;
+  min-width: 0;
+  margin-inline: auto;
   padding: clamp(1.5rem, 4vw, 2.75rem);
   border: 1px solid #9A7B22;
   border-radius: 20px;
@@ -227,7 +231,7 @@
   .modalSubmit { min-height: 54px; }
   .section { padding: 1.5rem .6rem; }
   .card { padding: 1.35rem 1rem; border-radius: 15px; }
-  .grid, .choices { grid-template-columns: 1fr; }
+  .grid, .choices { grid-template-columns: minmax(0, 1fr); }
   .choice { min-height: 58px; }
 }
 
