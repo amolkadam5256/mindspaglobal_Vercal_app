@@ -138,16 +138,18 @@
   inset: 0;
   display: grid;
   place-items: center;
-  padding: 2rem 1rem;
+  padding: 1rem;
   overflow-y: auto;
   background: rgba(7, 12, 27, .82);
   backdrop-filter: blur(7px);
 }
 .modal {
   position: relative;
-  width: min(100%, 1080px);
-  padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 6vw, 5rem);
-  border-radius: clamp(20px, 3vw, 36px);
+  width: min(100%, 760px);
+  max-height: calc(100dvh - 2rem);
+  overflow-y: auto;
+  padding: clamp(2rem, 5vh, 3rem) clamp(1rem, 5vw, 3.5rem);
+  border-radius: 28px;
   background: #fff;
   color: #17243d;
   box-shadow: 0 30px 100px rgba(0, 0, 0, .35);
@@ -155,41 +157,41 @@
 }
 .close {
   position: absolute;
-  top: -1.4rem;
-  right: -1.4rem;
+  top: .75rem;
+  right: .75rem;
   display: grid;
-  width: 4.5rem;
-  height: 4.5rem;
+  width: 3.75rem;
+  height: 3.75rem;
   place-items: center;
   border: 2px solid #e5eaf2;
   border-radius: 50%;
   background: #fff;
   color: #34415b;
-  font: 400 2.5rem/1 Arial, sans-serif;
+  font: 400 2.1rem/1 Arial, sans-serif;
   cursor: pointer;
   box-shadow: 0 10px 25px rgba(15, 23, 42, .12);
 }
 .close:focus-visible, .modalSubmit:focus-visible { outline: 3px solid #2866dd; outline-offset: 3px; }
 .modalTitle, .modalSuccess h2 {
-  margin: 0 0 clamp(1.4rem, 3vw, 2.5rem);
+  margin: 0 0 clamp(1.2rem, 3vh, 2rem);
   color: #17243d;
-  font-family: var(--font-display, Arial, sans-serif);
-  font-size: clamp(2rem, 5vw, 4.2rem);
+  font-family: var(--font-body, Arial, sans-serif);
+  font-size: clamp(1.8rem, 4vw, 3.2rem);
   font-weight: 700;
   line-height: 1.1;
   text-align: center;
   letter-spacing: -.045em;
 }
 .modalTitle span, .modalSuccess h2 span { color: #e54050; }
-.modalForm { display: grid; gap: clamp(.85rem, 1.8vw, 1.4rem); }
+.modalForm { display: grid; gap: clamp(.7rem, 1.5vh, 1rem); }
 .modalForm > input, .phoneInput {
   width: 100%;
-  min-height: clamp(58px, 6.5vw, 88px);
+  min-height: clamp(54px, 6vh, 68px);
   border: 2px solid #d9e0eb;
   border-radius: 16px;
   background: #fff;
   color: #26334b;
-  font: 400 clamp(1rem, 2vw, 1.5rem)/1.3 var(--font-body, Arial, sans-serif);
+  font: 400 clamp(1rem, 1.8vw, 1.25rem)/1.3 var(--font-body, Arial, sans-serif);
   box-shadow: 0 5px 15px rgba(15, 23, 42, .04);
 }
 .modalForm > input { padding: 0 clamp(1.1rem, 3vw, 2.3rem); }
@@ -205,24 +207,24 @@
 .gender label { display: inline-flex; align-items: center; gap: .65rem; font-size: 1.2rem; font-weight: 600; cursor: pointer; }
 .gender input { width: 1.2rem; height: 1.2rem; accent-color: #2866dd; }
 .modalError { margin: 0; color: #bd2937; font-size: 1rem; }
-.modalSubmit { width: 100%; min-height: clamp(62px, 7vw, 92px); margin-top: clamp(.35rem, 1vw, .75rem); border: 0; border-radius: 999px; background: linear-gradient(110deg, #2b6de8, #194dbd); color: #fff; font: 800 clamp(1rem, 2vw, 1.5rem)/1 var(--font-body, Arial, sans-serif); letter-spacing: .06em; cursor: pointer; box-shadow: 0 16px 32px rgba(36, 91, 204, .22); }
+.modalSubmit { width: 100%; min-height: clamp(56px, 7vh, 70px); margin-top: clamp(.3rem, 1vh, .65rem); border: 0; border-radius: 999px; background: linear-gradient(110deg, #2b6de8, #194dbd); color: #fff; font: 800 clamp(.95rem, 1.8vw, 1.25rem)/1 var(--font-body, Arial, sans-serif); letter-spacing: .06em; cursor: pointer; box-shadow: 0 16px 32px rgba(36, 91, 204, .22); }
 .modalSubmit:disabled { opacity: .7; cursor: wait; }
 .modalSuccess { padding: 1rem 0; text-align: center; }
 .modalSuccess p { margin: 0 0 2rem; color: #526078; font-size: clamp(1rem, 2vw, 1.4rem); }
 
 @media (max-width: 600px) {
-  .overlay { min-height: 100vh; min-height: 100dvh; padding: 1.25rem .65rem; }
-  .modal { width: 100%; padding: 3.1rem clamp(.9rem, 5vw, 1.4rem) 1.35rem; border-radius: 24px; }
-  .close { top: -.7rem; right: -.3rem; width: 3.7rem; height: 3.7rem; font-size: 2.1rem; }
+  .overlay { min-height: 100vh; min-height: 100dvh; padding: .65rem; }
+  .modal { width: 100%; max-height: calc(100dvh - 1.3rem); padding: 3.1rem clamp(.9rem, 5vw, 1.4rem) 1.2rem; border-radius: 22px; }
+  .close { top: .55rem; right: .55rem; width: 2.8rem; height: 2.8rem; font-size: 1.6rem; }
   .modalTitle { margin-bottom: 1.3rem; font-size: clamp(1.7rem, 6vw, 2.2rem); }
-  .modalForm { gap: .85rem; }
-  .modalForm > input, .phoneInput { min-height: 58px; border-radius: 12px; }
+  .modalForm { gap: .65rem; }
+  .modalForm > input, .phoneInput { min-height: 54px; border-radius: 11px; }
   .countryCode { min-width: 94px; gap: .35rem; padding: 0 .45rem; }
   .countryCode span { font-size: 1.15rem; }
   .phoneInput input { padding: 0 .8rem; }
   .gender legend { margin-bottom: .55rem; font-size: 1.1rem; }
   .gender label { font-size: 1.1rem; }
-  .modalSubmit { min-height: 60px; }
+  .modalSubmit { min-height: 54px; }
   .section { padding: 1.5rem .6rem; }
   .card { padding: 1.35rem 1rem; border-radius: 15px; }
   .grid, .choices { grid-template-columns: 1fr; }
@@ -231,9 +233,9 @@
 
 @media (max-height: 700px) and (min-width: 601px) {
   .overlay { place-items: start center; padding-block: 1rem; }
-  .modal { padding-block: 2.2rem; }
-  .modalTitle { margin-bottom: 1.5rem; font-size: clamp(2rem, 5vw, 3.7rem); }
-  .modalForm { gap: .85rem; }
-  .modalForm > input, .phoneInput { min-height: 58px; }
-  .modalSubmit { min-height: 64px; }
+  .modal { max-height: calc(100dvh - 2rem); padding-block: 1.5rem; }
+  .modalTitle { margin-bottom: 1rem; font-size: clamp(1.8rem, 4vw, 2.8rem); }
+  .modalForm { gap: .6rem; }
+  .modalForm > input, .phoneInput { min-height: 52px; }
+  .modalSubmit { min-height: 52px; }
 }
