@@ -26,6 +26,9 @@ const whatsapp = 'https://wa.me/919325214189?text=Hi%20Dipti%21%20I%20have%20a%2
 const group = 'https://chat.whatsapp.com/EjCpcY8EyGx3W92Yi8ZIjq?s=cl&p=a&mlu=4&ilr=4';
 
 export default function SessionRegistrationForm() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalDone, setModalDone] = useState(false);
+  const [modalError, setModalError] = useState('');
   const [done, setDone] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
@@ -38,14 +41,61 @@ export default function SessionRegistrationForm() {
       const link = target.closest('a[href]');
       if (!(link instanceof HTMLAnchorElement) || link.closest('#registration-form')) return;
       const url = new URL(link.href, window.location.href);
-      if (!url.hostname.endsWith('whatsapp.com') || !url.searchParams.has('phone')) return;
+      if (!(url.hostname.endsWith('whatsapp.com') || url.hostname === 'wa.me') || !url.searchParams.has('phone')) return;
       event.preventDefault();
-      document.getElementById('registration-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      window.setTimeout(() => document.querySelector<HTMLElement>('#registration-form input')?.focus(), 350);
+      setModalDone(false);
+      setModalError('');
+      setModalOpen(true);
     };
     document.addEventListener('click', scrollToForm);
     return () => document.removeEventListener('click', scrollToForm);
   }, []);
+
+  useEffect(() => {
+    if (!modalOpen) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setModalOpen(false);
+    };
+    document.addEventListener('keydown', closeOnEscape);
+    document.body.style.overflow = 'hidden';
+    window.setTimeout(() => document.querySelector<HTMLElement>('#seat-registration input')?.focus(), 50);
+    return () => {
+      document.removeEventListener('keydown', closeOnEscape);
+      document.body.style.overflow = '';
+    };
+  }, [modalOpen]);
+
+  async function handleModalSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setModalError('');
+    setBusy(true);
+    const values = new FormData(event.currentTarget);
+    const data = {
+      full_name: String(values.get('full_name') ?? '').trim(),
+      phone: `+91 ${String(values.get('phone') ?? '').trim()}`,
+      email: String(values.get('email') ?? '').trim(),
+      gender: String(values.get('gender') ?? ''),
+    };
+    try {
+      const validation = await fetch('/api/registration', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data),
+      });
+      if (!validation.ok) throw new Error('Validation failed');
+      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+      if (!accessKey) throw new Error('Web3Forms is not configured');
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ access_key: accessKey, subject: 'New seat reservation', from_name: 'Mind Spa Global Registration Form', ...data }),
+      });
+      const result = await response.json();
+      if (!response.ok || !result.success) throw new Error('Submission failed');
+      setModalDone(true);
+    } catch {
+      setModalError('We couldn’t submit your details just now. Please try again in a moment.');
+    } finally {
+      setBusy(false);
+    }
+  }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -103,6 +153,23 @@ export default function SessionRegistrationForm() {
   }
 
   return (
+    <>
+    {modalOpen && <div className={styles.overlay} onMouseDown={(event) => { if (event.target === event.currentTarget) setModalOpen(false); }}>
+      <section className={styles.modal} id="seat-registration" role="dialog" aria-modal="true" aria-labelledby="seat-title">
+        <button className={styles.close} type="button" aria-label="Close registration" onClick={() => setModalOpen(false)}>×</button>
+        {modalDone ? <div className={styles.modalSuccess}><h2 id="seat-title">You’re <span>Registered!</span></h2><p>Thanks for reserving your seat. We’ll be in touch shortly.</p><button className={styles.modalSubmit} onClick={() => setModalOpen(false)}>CLOSE</button></div> : <>
+          <h2 id="seat-title" className={styles.modalTitle}>Reserve Your <span>Seat Now</span></h2>
+          <form className={styles.modalForm} onSubmit={handleModalSubmit}>
+            <input name="full_name" type="text" placeholder="Full Name *" aria-label="Full Name" autoComplete="name" required minLength={2} maxLength={120} />
+            <div className={styles.phoneInput}><span className={styles.countryCode}><span aria-hidden="true">🇮🇳</span> +91</span><input name="phone" type="tel" placeholder="Phone *" aria-label="Phone" autoComplete="tel-national" required pattern="[0-9\s().-]{7,15}" /></div>
+            <input name="email" type="email" placeholder="Email *" aria-label="Email" autoComplete="email" required maxLength={254} />
+            <fieldset className={styles.gender}><legend>Gender <b>*</b></legend><label><input type="radio" name="gender" value="Male" required /> Male</label><label><input type="radio" name="gender" value="Female" /> Female</label></fieldset>
+            {modalError && <p className={styles.modalError} role="alert">{modalError}</p>}
+            <button className={styles.modalSubmit} type="submit" disabled={busy}>{busy ? 'SUBMITTING…' : 'REGISTER NOW'}</button>
+          </form>
+        </>}
+      </section>
+    </div>}
     <section id="registration-form" className={styles.section} aria-labelledby="registration-title">
       <div className={styles.card}>
         {done ? (
@@ -168,5 +235,6 @@ export default function SessionRegistrationForm() {
         )}
       </div>
     </section>
+    </>
   );
 }

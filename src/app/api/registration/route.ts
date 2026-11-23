@@ -37,12 +37,16 @@ export async function POST(request: NextRequest) {
 
   const phone = body.phone;
   const location = body.location;
+  const modalForm = 'email' in body || 'gender' in body;
   const valid = validText(body.full_name, 120)
     && body.full_name.trim().length >= 2
     && typeof phone === 'string' && /^\+?[\d\s().-]{7,20}$/.test(phone.trim())
-    && typeof body.profession === 'string' && professions.has(body.profession)
-    && (location === '' || (typeof location === 'string' && location.length <= 120))
-    && typeof body.seriousness === 'string' && seriousnessOptions.has(body.seriousness);
+    && (modalForm
+      ? typeof body.email === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email) && body.email.length <= 254
+        && (body.gender === 'Male' || body.gender === 'Female')
+      : typeof body.profession === 'string' && professions.has(body.profession)
+        && (location === '' || (typeof location === 'string' && location.length <= 120))
+        && typeof body.seriousness === 'string' && seriousnessOptions.has(body.seriousness));
 
   if (!valid) return NextResponse.json({ error: 'Check the required fields and try again.' }, { status: 400 });
   return NextResponse.json({ valid: true });
