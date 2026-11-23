@@ -188,8 +188,8 @@ export default function SessionRegistrationForm() {
               {fieldErrors.email && <small id="registration-email-error" className={styles.fieldError}>{fieldErrors.email}</small>}
               <fieldset className={styles.gender} aria-describedby={fieldErrors.gender ? 'registration-gender-error' : undefined}>
                 <legend>Gender <b>*</b></legend>
-                <label><input type="radio" name="gender" value="Male" required aria-invalid={!!fieldErrors.gender} /> Male</label>
-                <label><input type="radio" name="gender" value="Female" aria-invalid={!!fieldErrors.gender} /> Female</label>
+                <label><input type="radio" name="gender" value="Male" required /> Male</label>
+                <label><input type="radio" name="gender" value="Female" /> Female</label>
               </fieldset>
               {fieldErrors.gender && <small id="registration-gender-error" className={styles.fieldError} role="alert">{fieldErrors.gender}</small>}
               {error && <p className={styles.error} role="alert">{error}</p>}
