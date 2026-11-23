@@ -201,6 +201,7 @@
 .modalForm > input { padding: 0 clamp(1.1rem, 3vw, 2.3rem); }
 .modalForm > input::placeholder, .phoneInput input::placeholder { color: #9aa5b6; opacity: 1; }
 .modalForm > input:focus, .phoneInput:focus-within { outline: none; border-color: #2866dd; box-shadow: 0 0 0 4px rgba(40, 102, 221, .14); }
+.modalForm > input[aria-invalid="true"], .phoneInput.invalidPhone { border-color: #e54050; }
 .phoneInput { display: flex; overflow: hidden; }
 .countryCode { display: flex; min-width: 120px; align-items: center; justify-content: center; gap: .75rem; padding: 0 1rem; border-right: 2px solid #d9e0eb; font-size: clamp(1rem, 1.8vw, 1.35rem); font-weight: 700; }
 .countryCode span { font-size: 1.5rem; }
